@@ -1,0 +1,20 @@
+<div class="cont-select cont-app-component">
+    <app-navbar></app-navbar>
+
+    <div id="content-select">
+        <div class="cont-datos-user">
+            <p>Bienvenido <strong>Usuario</strong></p>
+            <p>Saldo: <strong id="saldo-link" (click)="actualizarSaldo()">999 999 999.99 $</strong></p>
+        </div>
+        <h3>Elige el modo de Juego</h3>
+        <div id="cont-games" class="cards">
+
+            <figure class="card" *ngFor="let game of games; let i = index" 
+            (click)="seleccionarJuego(i)">
+                <img src={{game.img}} />
+                <figcaption>{{game.nombre}}</figcaption>
+            </figure>
+
+        </div>
+    </div>
+</div>

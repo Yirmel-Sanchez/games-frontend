@@ -1,0 +1,31 @@
+<div id="cont-register" class="cont-app-component">
+    <div id="cont-form">
+        <div id="cont-form2">
+            <img class="img-logo" src="assets/logo.png" alt=""/>
+            <form class="glass-1">
+                <h2>Registro</h2>
+                <div id="content-registro">
+
+                    <div class="content-registro-col">
+                        <label for="input-name">Nombre</label>
+                        <input type="text" placeholder="Nombre" id="input-name" [(ngModel)]="name" name="name"/>
+                        <label for="input-username">Correo Electrónico</label>
+                        <input type="text" placeholder="Correo" id="input-username" [(ngModel)]="user" name="user"/>
+                    </div>
+
+                    <span class="vertical-line"></span>
+
+                    <div class="content-registro-col">
+                        <label for="input-password">Contraseña</label>
+                        <input type="password" placeholder="Contraseña" id="input-password1" [(ngModel)]="pass1" name="pass1"/>
+                        <label for="input-password">Repite la Contraseña</label>
+                        <input type="password" placeholder="Contraseña" id="input-password2" [(ngModel)]="pass2" name="pass2"/>
+                    </div>
+
+                </div>
+                <button class="btn btn-2" (click)="registrarse()">Registrarse</button>
+                <a routerLink="../login">o Iniciar Sesión</a>
+            </form>
+        </div>
+    </div>
+</div>

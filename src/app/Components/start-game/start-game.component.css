@@ -1,0 +1,158 @@
+#content-start {
+    /*background: yellow;*/
+    height: calc(100vh - 70px);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-start img {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    object-fit: contain;
+}
+
+.col-50 {
+    width: 50%;
+    height: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cont-datos-game {
+    padding: 50px 35px;
+    color: var(--light-text-color);
+}
+
+#cont-datos-game p {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: justify;
+    margin: 8px 0;
+}
+
+#cont-datos-game h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.9rem;
+    text-align: center;
+}
+
+.btn {
+    margin-top: 40px;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-1 {
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color) !important;
+}
+
+.btn-2 {
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color) !important;
+}
+
+.btn-2:hover {
+    background-color: var(--primary-color) !important;
+}
+
+.cont-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+i {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+i:hover {
+    color: var(--primary-color);
+}
+
+.cont-btn-back {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    #cont-img {
+        display: none;
+    }
+
+    #cont-datos {
+        width: 90%;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    #cont-datos-game {
+        padding: 5vh;
+    }
+
+    #cont-datos-game p {
+        margin: 4px 0;
+    }
+
+    #cont-datos-game h2 {
+        font-size: 1.8rem;
+        margin: 8px 0;
+    }
+
+    .btn {
+        margin-top: 8px;
+    }
+
+    i {
+        font-size: 30px;
+    }
+
+    .cont-btn-back {
+        margin-bottom: clamp(4px, 30px, 5vh);
+    }
+}
+
+@media screen and (max-height: 400px) {
+    #cont-datos-game {
+        padding: 3vh;
+    }
+
+    #cont-datos-game p {
+        font-size: 1rem;
+        margin: 4px 0;
+    }
+
+    #cont-datos-game h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        margin: 4px 0;
+    }
+
+    .btn {
+        margin-top: 4px;
+        padding: 6px 0;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    i {
+        font-size: 20px;
+    }
+}

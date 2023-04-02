@@ -1,0 +1,25 @@
+<div id="cont-login" class="cont-app-component">
+    <div id="cont-info_login" class="flotar">
+        <p class="glass-1"><strong>Number Match</strong> es un emocionante juego de puzles numéricos en el que debes
+            conectar los números iguales para crear una suma más alta. Con desafiantes niveles y múltiples modos de
+            juego, Number Match es perfecto para los amantes de los juegos de rompecabezas y los desafíos mentales.
+            ¿Estás listo para poner a prueba tus habilidades matemáticas? <strong>¡Juega ahora!</strong></p>
+    </div>
+    <div id="cont-form_login">
+        <div id="cont-form">
+            
+            <div id="cont-form2">
+                <img class="img-logo" src="assets/logo.png" alt=""/>
+                <form class="glass-1">
+                    <h2>Inicio de Sesión</h2>
+                    <label for="input-username">Usuario</label>
+                    <input type="text" placeholder="Correo" id="input-username" [(ngModel)]="user"/>
+                    <label for="input-password">Contraseña</label>
+                    <input type="password" placeholder="Contraseña" id="input-password" [(ngModel)]="pass"/>
+                    <button class="btn btn-2" (click)="acceder()">Acceder</button>
+                    <a routerLink="../register">o Registrarse</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

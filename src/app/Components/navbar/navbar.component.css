@@ -1,0 +1,42 @@
+.bar-select {
+    height: 60px;
+    width: calc(100% - 10px);
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-logo-bar {
+    height: 50px;
+    margin: 5px 7px;
+    object-fit: contain;
+}
+
+.cont-logout {
+    height: 50px;
+    margin: 5px 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.vertical-line_logout {
+    display: inline-block;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    height: 80%;
+    margin: 0 5px;
+}
+
+.cont-logout i{
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.cont-logout i:hover{
+    color: var(--primary-color);
+}

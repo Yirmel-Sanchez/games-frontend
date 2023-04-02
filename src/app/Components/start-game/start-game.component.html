@@ -1,0 +1,24 @@
+<div id="cont-start" class="cont-app-component">
+    <app-navbar></app-navbar>
+
+    <div id="content-start">
+        <div id="cont-img" class="col-50">
+           <img src={{games[id].img}} alt=""/> 
+        </div>
+        <div id="cont-datos" class="col-50">
+            <div id="cont-datos-game" class="glass-1">
+                <div class="cont-btn-back">
+                    <i class="fa-solid fa-arrow-left" (click)="back()"></i>
+                </div>
+                <div class="cont-price">
+                    <p >${{games[id].precio}}</p>
+                    <p *ngIf="games[id].precio !== 0">PREMIUM</p>
+                    <p *ngIf="games[id].precio === 0">FREE</p>
+                </div>
+                <h2>{{games[id].nombre}}</h2>
+                <p>{{games[id].descripcion}}</p>
+                <button class="btn btn-2" (click)="iniciarPartida()">Iniciar Partida</button>
+            </div>
+        </div>
+    </div>
+</div>
