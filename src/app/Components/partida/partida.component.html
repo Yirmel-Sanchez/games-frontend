@@ -1,0 +1,25 @@
+<div class="cont-partida cont-app-component">
+    <app-navbar></app-navbar>
+
+    <div id="content-partida">
+        <div class="cont-top">
+            <div class="datos-partida">
+                <p>Partida: <strong>{{ idPartida }}</strong></p>
+            </div>
+            <div class="cont-btn">
+                <button class="btn btn-2" (click)="abandonarPartida()">Abandonar Partida</button>
+            </div>
+        </div>
+        <div id="cont-boards">
+            <div class="board-player">
+                <app-tablero></app-tablero>
+                <button id="btn-add">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div class="board-other">
+                <app-tablero></app-tablero>
+            </div>
+        </div>
+    </div>
+</div>

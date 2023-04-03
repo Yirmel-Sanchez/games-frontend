@@ -12,6 +12,8 @@ import { StartGameComponent } from './Components/start-game/start-game.component
 import { WaitRoomComponent } from './Components/wait-room/wait-room.component';
 import { ResultComponent } from './Components/result/result.component';
 import { BalanceComponent } from './Components/balance/balance.component';
+import { PartidaComponent } from './Components/partida/partida.component';
+import { TableroComponent } from './Components/tablero/tablero.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BalanceComponent } from './Components/balance/balance.component';
     StartGameComponent,
     WaitRoomComponent,
     ResultComponent,
-    BalanceComponent
+    BalanceComponent,
+    PartidaComponent,
+    TableroComponent
   ],
   imports: [
     BrowserModule,

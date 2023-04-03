@@ -1,0 +1,15 @@
+<div class="cont-tablero">
+    <div class="header-tablero">
+        <div class="cont-name">
+            <p>{{nombreJugador}}</p>
+        </div>
+    </div>
+    <div class="tablero">
+        <div class="row" *ngFor="let fila of matriz3d; let i = index">
+            <div class="cell" *ngFor="let celda of fila; let j = index" >
+                <p [ngClass]="{'cell-1': celda[1]!==0, 'cell-2': celda[1]===0, 'cell-3': celda[0]===0}" *ngIf="!celdasSel[i][j]" (click)="clickCelda(i,j)">{{celda[0]}}</p>
+                <p class="cell-4" *ngIf="celdasSel[i][j]" (click)="clickCelda(i,j)">{{celda[0]}}</p>
+            </div>
+        </div>
+    </div>
+</div>
