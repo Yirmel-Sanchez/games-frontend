@@ -3,8 +3,8 @@
 
     <div id="content-select">
         <div class="cont-datos-user">
-            <p>Bienvenido <strong>Usuario</strong></p>
-            <p>Saldo: <strong id="saldo-link" (click)="actualizarSaldo()">999 999 999.99 $</strong></p>
+            <p>Bienvenido <strong>{{ userName }}</strong></p>
+            <p>Saldo: <strong id="saldo-link" (click)="actualizarSaldo()">{{ userBalance }} $</strong></p>
         </div>
         <h3>Elige el modo de Juego</h3>
         <div id="cont-games" class="cards">

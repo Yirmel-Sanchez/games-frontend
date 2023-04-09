@@ -19,9 +19,17 @@ export class SelectGameComponent implements OnInit {
     }
   ];
 
+  userName: string = '';
+  userBalance: number = 0;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('tokenAcceso')) {
+      this.router.navigate(['/login']);
+    }
+    this.userName = localStorage.getItem('userName') || '';
+    this.userBalance = Number(localStorage.getItem('userBalance')) || 0;
   }
 
   seleccionarJuego(idx: number){

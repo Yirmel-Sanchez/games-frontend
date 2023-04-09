@@ -1,0 +1,11 @@
+<div *ngIf="mostrar" class="cont-alert" [ngSwitch]="tipoAlerta">
+    <div class="alert alert-error" *ngSwitchCase="'error'">
+        <strong>{{ texto }}</strong>
+    </div>
+    <div class="alert alert-success" *ngSwitchCase="'success'">
+        <strong>{{ texto }}</strong>
+    </div>
+    <div class="alert alert-info" *ngSwitchDefault>
+        <strong>{{ texto }}</strong>
+    </div>
+</div>

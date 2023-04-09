@@ -10,12 +10,12 @@
             
             <div id="cont-form2">
                 <img class="img-logo" src="assets/logo.png" alt=""/>
-                <form class="glass-1">
+                <form class="glass-1" [formGroup]="loginForm" (ngSubmit)="acceder()">
                     <h2>Inicio de Sesión</h2>
                     <label for="input-username">Usuario</label>
-                    <input type="text" placeholder="Correo" id="input-username" [(ngModel)]="user"/>
+                    <input type="text" placeholder="Nombre" id="input-username" formControlName="username"/>
                     <label for="input-password">Contraseña</label>
-                    <input type="password" placeholder="Contraseña" id="input-password" [(ngModel)]="pass"/>
+                    <input type="password" placeholder="Contraseña" id="input-password" formControlName="password"/>
                     <button class="btn btn-2" (click)="acceder()">Acceder</button>
                     <a routerLink="../register">o Registrarse</a>
                 </form>

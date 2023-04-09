@@ -1,0 +1,24 @@
+.cont-alert{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.alert {
+    color: white;
+    width: 100%;
+    padding: 15px 20px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: #d9534f;
+}
+
+.alert-success {
+    background: #02b875;
+}
+
+.alert-info {
+    background: #f0ad4e;
+}
