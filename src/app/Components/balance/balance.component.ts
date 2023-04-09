@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class BalanceComponent implements OnInit {
 
+  cantSel: string = "0";
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -20,4 +22,11 @@ export class BalanceComponent implements OnInit {
   back(): void {
     this.router.navigate(['/home']);
   }
+
+  onSelect(): void {
+    const cantidad: number = parseInt(this.cantSel);
+    //peticion http prepay(cantidad)
+  }
+
+
 }

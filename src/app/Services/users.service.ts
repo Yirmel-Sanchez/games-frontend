@@ -37,9 +37,9 @@ export class UsersService {
         
         const httpOptions = {
           headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Allow-Credentials': 'true'
-          })
+            'Content-Type': 'application/json'
+          }),
+          withCredentials: true // habilita la inclusión de cookies y encabezados de autenticación
         };
         
         return this.http.put<any>(this.apiUrl + "/users/login", body, httpOptions);

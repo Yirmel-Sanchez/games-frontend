@@ -11,8 +11,19 @@
             <div class="form glass-1">
                 <div class="cont-cant-input">
                     <p style="margin: 8px 5px 0 0;">Cantidad</p>
-                    <input type="number" name="cantidad" id="cantidad" placeholder="0.00" step="0.01"
-                        pattern="\d+(\.\d{1,2})?">
+                    <select [(ngModel)]="cantSel" (ngModelChange)="onSelect()" class="select-input">
+                        <option value="0">0.00 $</option>
+                        <option value="5">5.00 $</option>
+                        <option value="10">10.00 $</option>
+                        <option value="15">15.00 $</option>
+                        <option value="20">20.00 $</option>
+                        <option value="25">25.00 $</option>
+                        <option value="30">30.00 $</option>
+                        <option value="35">35.00 $</option>
+                        <option value="40">40.00 $</option>
+                        <option value="45">45.00 $</option>
+                        <option value="50">50.00 $</option>
+                      </select>
                 </div>
                 <div class="cont-cards">
                     <div class="cont-card">
