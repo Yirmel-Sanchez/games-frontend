@@ -5,45 +5,27 @@
         <div class="cont-datos-user">
             <i class="fa-solid fa-arrow-left" (click)="back()"></i>
             <h3 id="h3-up">Cargar Saldo</h3>
-            <p>Saldo: <strong>999 999 999.99 $</strong></p>
+            <p>Saldo: <strong>{{ saldo }} $</strong></p>
         </div>
         <div id="cont-form">
             <div class="form glass-1">
                 <div class="cont-cant-input">
                     <p style="margin: 8px 5px 0 0;">Cantidad</p>
                     <select [(ngModel)]="cantSel" (ngModelChange)="onSelect()" class="select-input">
-                        <option value="0">0.00 $</option>
-                        <option value="5">5.00 $</option>
-                        <option value="10">10.00 $</option>
-                        <option value="15">15.00 $</option>
-                        <option value="20">20.00 $</option>
-                        <option value="25">25.00 $</option>
-                        <option value="30">30.00 $</option>
-                        <option value="35">35.00 $</option>
-                        <option value="40">40.00 $</option>
-                        <option value="45">45.00 $</option>
-                        <option value="50">50.00 $</option>
-                      </select>
+                        <option *ngFor="let value of cants" [value]="value">{{ value }}.00 $</option>
+                    </select>
                 </div>
-                <div class="cont-cards">
-                    <div class="cont-card">
-                        <p>Número de la Tarjeta</p>
-                        <input type="number" name="num1" id="num1" placeholder="0000-0000-0000-0000" class="cont-num">
-                        <div class="cont-date">
-                            <p>Válido </p>
-                            <input type="number" name="mes" id="mes" placeholder="MM" maxlength="2" class="cont-num2">
-                            <p>/</p>
-                            <input type="number" name="anio" id="anio" placeholder="AA" maxlength="2" class="cont-num2">
-                        </div>
-                    </div>
-                    <div class="cont-card">
-                        <p>cvv</p>
-                        <div class="cont-cvv-inputs">
-                            <input type="number" name="cvv" id="cvv" placeholder="xxx" maxlength="3" class="cont-num3">
-                        </div>
+
+                <div class="cont-form-stripe">
+                    <div id="cont-form-stripe">
+                        <form id="payment-form" style="display:none">
+                            <div id="card-element"></div>
+                            <button id="submit" class="btn btn-2">Actualizar Saldo</button>
+                            <p id="card-error" role="alert"></p>
+                            <p class="result-message hidden">Payment succeeded</p>
+                        </form>
                     </div>
                 </div>
-                <button class="btn btn-2" (click)="actualizarSaldo()">Actualizar Saldo</button>
             </div>
         </div>
     </div>
