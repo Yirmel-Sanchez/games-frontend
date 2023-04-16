@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/Services/error.service';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-select-game',
@@ -22,14 +24,14 @@ export class SelectGameComponent implements OnInit {
   userName: string = '';
   userBalance: number = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _usersService: UsersService, private _errorService: ErrorService) { }
 
   ngOnInit(): void {
     if (!localStorage.getItem('tokenAcceso')) {
       this.router.navigate(['/login']);
     }
     this.userName = localStorage.getItem('userName') || '';
-    this.userBalance = Number(localStorage.getItem('userBalance')) || 0;
+    this.consultarSaldoUsuario();
   }
 
   seleccionarJuego(idx: number){
@@ -38,5 +40,18 @@ export class SelectGameComponent implements OnInit {
 
   actualizarSaldo(){
     this.router.navigate(['/balance']);
+  }
+
+  consultarSaldoUsuario(): void {
+    this._usersService.consultarSaldoUsuario().subscribe(
+      (data) => {
+        console.log(data);
+        this.userBalance = data.body.userBalance;
+      },
+      (error) => {
+        console.log(error);
+        this._errorService.setError("Error al consultar el saldo del usuario");
+      }
+    );
   }
 }

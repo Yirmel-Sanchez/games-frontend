@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorService } from 'src/app/Services/error.service';
+import { GamesService } from 'src/app/Services/games.service';
+import { WebSocketService } from 'src/app/Services/web-socket.service';
 
 @Component({
   selector: 'app-wait-room',
@@ -8,26 +11,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class WaitRoomComponent implements OnInit {
 
-  id: string = "";
+  idMatch: string = "";
+  ws?: WebSocket;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _webSocketService: WebSocketService, private _gamesService: GamesService, private _errorService: ErrorService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      this.idMatch = params['id'];
+    });
+    this._webSocketService.connect();
+    this._webSocketService.onEvent().subscribe((event: any) => {
+      console.log(event);
     });
   }
 
   abandonarPartida():void {
     if(this.peticionAbandonarPartida()){
-      this.router.navigate(['/home']);
+      this._gamesService.leaveGame(this.idMatch, localStorage.getItem('tokenAcceso') || '').subscribe(
+        (data) => {
+          console.log(data);
+          this.router.navigate(['/home']);
+        }, (error) => {
+          this._errorService.setError('Error al abandonar la partida');
+        }
+      );
     } else {
-      this.router.navigate(['/result', this.id]);
+      this.router.navigate(['/result', this.idMatch]);
     }
   }
 
   peticionAbandonarPartida(): boolean {
-    if(false){
+    if(true){
       return true; //no hay jugadores en la partida
     } else {
       return false; //hay jugadores en la partida
