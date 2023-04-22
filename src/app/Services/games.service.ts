@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,16 @@ import { Observable } from 'rxjs';
 export class GamesService {
 
   constructor(private http: HttpClient) { }
+
+  private boards$ = new Subject<string>();
+
+  setBoards(boards: string) {
+    this.boards$.next(boards);
+  }
+
+  getBoards(): Observable<string> {
+    return this.boards$.asObservable();
+  }
 
   private apiUrl = 'http://localhost:8084';
 

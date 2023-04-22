@@ -20,12 +20,14 @@ export class WaitRoomComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idMatch = params['id'];
     });
+    this._gamesService.setBoards("");
     this._webSocketService.connect(this.idMatch);
     this._webSocketService.onEvent().subscribe((event: any) => {
       console.log(event);
       if (event.type == 'message') {
         let data = JSON.parse(event.data);
         if (data.type == 'MATCH STARTED') {
+          this._gamesService.setBoards(data.boards);
           this.router.navigate(['/game', this.idMatch]);
         }
       }
