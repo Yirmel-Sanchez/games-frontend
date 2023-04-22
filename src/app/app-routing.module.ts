@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'waiting-room/:id', component: WaitRoomComponent},
   { path: 'result/:id', component: ResultComponent},
   { path: 'balance', component: BalanceComponent},
-  { path: 'game', component: PartidaComponent},
+  { path: 'game/:id', component: PartidaComponent},
   { path: '**', redirectTo: ''}
 ];
 

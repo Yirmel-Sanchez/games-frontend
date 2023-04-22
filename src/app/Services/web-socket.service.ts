@@ -6,19 +6,20 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class WebSocketService {
-
   private ws?: WebSocket;
   private eventSubject$: Subject<any> = new Subject<any>();
   private messageSubject$: Subject<any> = new Subject<any>();
 
   constructor() { }
 
-  connect(): void {
-    const wsUrl = 'ws://localhost:8084/wsGames';
+  connect(idMatch:string): void {
+    //const wsUrl = 'ws://localhost:8084/wsGames?idMatch='+idMatch+'&idUser='+localStorage.getItem('tokenAcceso');
+    const wsUrl = 'ws://localhost:8084/wsGames?idMatch='+idMatch+'&nameUser='+localStorage.getItem('userName');
     this.ws = new WebSocket(wsUrl);
 
     this.ws.onopen = () => {
       this.eventSubject$.next({ type: 'open' });
+      this.playerReady(idMatch);
     };
 
     this.ws.onmessage = (event) => {
@@ -34,5 +35,12 @@ export class WebSocketService {
     return this.eventSubject$.asObservable();
   }
 
+  playerReady(idMatch:string): void {
+    this.ws?.send(JSON.stringify({ type: 'PLAYER READY', idMatch: idMatch }));
+  }
+
+  leaveGame(idMatch: string) {
+    this.ws?.send(JSON.stringify({ type: 'LEAVE GAME', nameUser: localStorage.getItem('userName'), matchId: idMatch }));
+  }
 
 }

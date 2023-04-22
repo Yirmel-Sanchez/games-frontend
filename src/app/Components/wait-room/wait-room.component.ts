@@ -20,14 +20,20 @@ export class WaitRoomComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idMatch = params['id'];
     });
-    this._webSocketService.connect();
+    this._webSocketService.connect(this.idMatch);
     this._webSocketService.onEvent().subscribe((event: any) => {
       console.log(event);
+      if (event.type == 'message') {
+        let data = JSON.parse(event.data);
+        if (data.type == 'MATCH STARTED') {
+          this.router.navigate(['/game', this.idMatch]);
+        }
+      }
     });
   }
 
-  abandonarPartida():void {
-    if(this.peticionAbandonarPartida()){
+  abandonarPartida(): void {
+    if (this.peticionAbandonarPartida()) {
       this._gamesService.leaveGame(this.idMatch, localStorage.getItem('tokenAcceso') || '').subscribe(
         (data) => {
           console.log(data);
@@ -42,7 +48,7 @@ export class WaitRoomComponent implements OnInit {
   }
 
   peticionAbandonarPartida(): boolean {
-    if(true){
+    if (true) {
       return true; //no hay jugadores en la partida
     } else {
       return false; //hay jugadores en la partida
