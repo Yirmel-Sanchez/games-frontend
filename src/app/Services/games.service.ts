@@ -9,25 +9,53 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
-  private boards$ = new Subject<string>();
+  private boards: string = "";
+  private board1$ = new Subject<string>();
+  private board2$ = new Subject<string>();
+  private namePlayer2: string = "";
 
-  setBoards(boards: string) {
-    this.boards$.next(boards);
+  setBoard(board: string, num: number) {
+    if (num == 1) {
+      this.board1$.next(board);
+    } else {
+      this.board2$.next(board);
+    }
   }
 
-  getBoards(): Observable<string> {
-    return this.boards$.asObservable();
+  getBoard(num: number): Observable<string> {
+    if (num == 1)
+      return this.board1$.asObservable();
+    return this.board2$.asObservable();
+  }
+
+
+  setNamePlayer2(player2: string) {
+    console.log("set name player 2: " + player2);
+    this.namePlayer2 = player2;
+  }
+
+  getNamePlayer2(): string {
+    return this.namePlayer2;
+  }
+
+  setBoards(boards: string) {
+    console.log("set boards: " + boards);
+    this.boards= boards;
+  }
+
+  getBoards(): string {
+    return this.boards;
   }
 
   private apiUrl = 'http://localhost:8084';
 
   public requestGame(juego: string, idPlayer: string): Observable<any> {
     const params = { juego, idPlayer };
-    return this.http.get<any>(this.apiUrl+"/games/requestGame", { params });
+    return this.http.get<any>(this.apiUrl + "/games/requestGame", { params });
   }
 
   public leaveGame(idMatch: string, idPlayer: string): Observable<any> {
-    console.log("leaveGame: "+idMatch+" "+idPlayer);
+    console.log("leaveGame: " + idMatch + " " + idPlayer);
     const body = {
       idMatch: idMatch,
       idPlayer: idPlayer

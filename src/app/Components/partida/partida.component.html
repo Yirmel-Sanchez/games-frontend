@@ -12,13 +12,13 @@
         </div>
         <div id="cont-boards">
             <div class="board-player">
-                <app-tablero></app-tablero>
-                <button id="btn-add">
+                <app-tablero [player]="player1" [tablero]="board1" [propio]="true" (pairSelected)="move($event)"></app-tablero>
+                <button id="btn-add" (click)="clickAdd()">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
             <div class="board-other">
-                <app-tablero></app-tablero>
+                <app-tablero [player]="player2" [tablero]="board2" [propio]="false"></app-tablero>
             </div>
         </div>
     </div>

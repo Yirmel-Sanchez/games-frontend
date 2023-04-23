@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
 import { GamesService } from 'src/app/Services/games.service';
 import { WebSocketService } from 'src/app/Services/web-socket.service';
 
@@ -10,6 +11,8 @@ import { WebSocketService } from 'src/app/Services/web-socket.service';
 })
 export class PartidaComponent implements OnInit {
   idMatch: string = "";
+  player1: string = "";
+  player2: string = "";
   board1: string = "";
   board2: string = "";
 
@@ -19,11 +22,9 @@ export class PartidaComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idMatch = params['id'];
     });
-    this._gamesService.getBoards().subscribe((boards: string) => {
-      this.getBoards(boards);
-      console.log(this.board1);
-      console.log(this.board2);
-    });
+    
+    this.getBoards(this._gamesService.getBoards());
+
     this._webSocketService.onEvent().subscribe((event: any) => {
       console.log(event);
       if (event.type == 'message') {
@@ -35,24 +36,41 @@ export class PartidaComponent implements OnInit {
         }
       }
     });
+    this.player1 = localStorage.getItem('userName') || "";
+    this.player2 = this._gamesService.getNamePlayer2();
   }
-  getBoards(boards: string) {
-    let json = JSON.parse(boards);
-    for (let key in json) {
+  
+  getBoards(boards: any) {
+    console.log(boards);
+    for (let key in boards) {
       if (key == localStorage.getItem('userName')) {
-        this.board1 = json[key];
+        this.board1 = boards[key];
+        console.log(this.board1);
       } else {
-        this.board2 = json[key];
+        this.board2 = boards[key];
+        console.log(this.board2);
+        this._gamesService.setNamePlayer2(key);
       }
     }
   }
 
   updateBoards(boards: any) {
-    throw new Error('Method not implemented.');
+    this._gamesService.setBoards(boards);
+    this.getBoards(boards);
+    console.log("boards actualizados: "+boards);
+    
   }
 
   abandonarPartida(): void {
     this._webSocketService.leaveGame(this.idMatch);
   }
 
+  clickAdd(): void {
+    this.board1 = this.board1.replace('0', '1')
+    console.log(this.board1);
+  }
+
+  move(mensaje: string): void {
+    this._webSocketService.sendMove(this.idMatch, mensaje);
+  }
 }

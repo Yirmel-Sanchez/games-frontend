@@ -43,4 +43,9 @@ export class WebSocketService {
     this.ws?.send(JSON.stringify({ type: 'LEAVE GAME', nameUser: localStorage.getItem('userName'), matchId: idMatch }));
   }
 
+  sendMove(idMatch: string, mensaje: string) {
+    this.ws?.send(JSON.stringify({ type: 'MOVEMENT', nameUser: localStorage.getItem('userName'), matchId: idMatch, move: mensaje }));
+  }
+  
+
 }
