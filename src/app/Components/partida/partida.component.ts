@@ -32,6 +32,7 @@ export class PartidaComponent implements OnInit {
         if (data.type == 'MATCH FINISHED') {
           this.router.navigate(['/result', data.winner]);
         } else if (data.type == 'UPDATE BOARDS'){
+          console.log(event)
           this.updateBoards(data.boards);
         }
       }
@@ -66,8 +67,7 @@ export class PartidaComponent implements OnInit {
   }
 
   clickAdd(): void {
-    this.board1 = this.board1.replace('0', '1')
-    console.log(this.board1);
+    this._webSocketService.sendAdd(this.idMatch);
   }
 
   move(mensaje: string): void {

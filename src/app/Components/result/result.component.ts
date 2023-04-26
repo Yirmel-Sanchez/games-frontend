@@ -16,12 +16,8 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.ganador = this.id;
     });
-
-    this.ganador = this.peticionGanador();
-  }
-  peticionGanador(): string {
-    return "Jugador 1";
   }
 
   goHome(): void {

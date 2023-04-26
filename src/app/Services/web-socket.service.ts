@@ -46,6 +46,9 @@ export class WebSocketService {
   sendMove(idMatch: string, mensaje: string) {
     this.ws?.send(JSON.stringify({ type: 'MOVEMENT', nameUser: localStorage.getItem('userName'), matchId: idMatch, move: mensaje }));
   }
-  
+
+  sendAdd(idMatch: string) {
+    this.ws?.send(JSON.stringify({ type: 'ADD NUMBERS', nameUser: localStorage.getItem('userName'), matchId: idMatch}));
+  }
 
 }
