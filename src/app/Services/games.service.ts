@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GamesService {
-
+  
   constructor(private http: HttpClient) { }
 
   private boards: string = "";
@@ -70,4 +70,21 @@ export class GamesService {
     return this.http.post<any>(this.apiUrl + "/games/leaveGame", body, httpOptions);
   }
 
+  getBoardAlone(): Observable<any> {
+    let userName = localStorage.getItem('userName')||'';
+    const params = { userName };
+    return this.http.get<any>(this.apiUrl + "/games/requestGameAlone", { params });
+  }
+
+  moveAlone(move: string): Observable<any> {
+    let userName = localStorage.getItem('userName')||'';
+    const params = { userName, move };
+    return this.http.get<any>(this.apiUrl + "/games/moveAlone", { params });
+  }
+
+  addNumbersAlone(): Observable<any> {
+    let userName = localStorage.getItem('userName')||'';
+    const params = { userName };
+    return this.http.get<any>(this.apiUrl + "/games/addNumbersAlone", { params });
+  }
 }

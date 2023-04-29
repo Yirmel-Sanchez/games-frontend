@@ -42,6 +42,11 @@ export class StartGameComponent implements OnInit {
   }
 
   iniciarPartida(): void {
+    if(this.games[this.id].key == 'nm_alone'){
+      this.router.navigate(['/game-alone']);
+      return;
+    }
+
     this._gamesService.requestGame(this.games[this.id].key, localStorage.getItem('tokenAcceso') || '').subscribe(
       (data) => {
         console.log(data);

@@ -8,6 +8,7 @@ import { WaitRoomComponent } from './Components/wait-room/wait-room.component';
 import { ResultComponent } from './Components/result/result.component';
 import { BalanceComponent } from './Components/balance/balance.component';
 import { PartidaComponent } from './Components/partida/partida.component';
+import { Partida1Component } from './Components/partida1/partida1.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'result/:id', component: ResultComponent},
   { path: 'balance', component: BalanceComponent},
   { path: 'game/:id', component: PartidaComponent},
+  { path: 'game-alone', component: Partida1Component},
   { path: '**', redirectTo: ''}
 ];
 

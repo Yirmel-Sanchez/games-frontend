@@ -18,6 +18,7 @@ import { TableroComponent } from './Components/tablero/tablero.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { ErrorBarComponent } from './Components/error-bar/error-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Partida1Component } from './Components/partida1/partida1.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     TableroComponent,
     ErrorComponent,
     ErrorBarComponent,
+    Partida1Component,
     
   ],
   imports: [
